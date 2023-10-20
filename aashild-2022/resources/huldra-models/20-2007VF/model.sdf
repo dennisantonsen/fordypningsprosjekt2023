@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+    <model name='20-2007VF'>
+        <static>true</static>
+        <link name='link0'>
+            <visual name="visual0">
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/20-2007VF/meshes/20-2007VF.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

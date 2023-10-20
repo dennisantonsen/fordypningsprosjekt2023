@@ -1,0 +1,7 @@
+62-2828OF
+  "xCoordinate": 94319,
+  "yCoordinate": 281275,
+  "zCoordinate": 25769,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
