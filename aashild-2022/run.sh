@@ -74,9 +74,10 @@ compose_up_args=(${arg_build})
 ### MAIN
 
 
-xhost +local:root
+xhost +localhost
+docker compose up "${compose_up_args[@]}"
 
-docker-compose up "${compose_up_args[@]}"
-
-xhost -local:root
+# On exit, clean up
+docker compose down -v
+xhost -localhost
 
