@@ -24,36 +24,24 @@ RUN \
 
 # Force all calls to python to be python3
 RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN pip install --upgrade pip
 
-# Install PyMesh  
-# The requirement.txt has a dependency conflict: 
-#   ERROR: scipy 1.9.2 has requirement numpy<1.26.0,>=1.18.5, but you'll have numpy 1.17.4 which is incompatible.
-# Possible workaround: run `pip3 install "numpy>=1.18.5"`  before "pip3 install..."
-
-
-RUN mkdir -p catkin_ws
-#   && cd catkin_ws
-# RUN mkdir -p catkin_ws \
-#   && cd catkin_ws \
-#   && git clone https://github.com/PyMesh/PyMesh.git \
-#   && cd PyMesh \
-#   && git submodule update --init \
-#   && pip3 install "numpy>=1.18.5" \
-#   && pip3 install -r /home/catkin_ws/PyMesh/python/requirements.txt \
-#   && python3 setup.py build \
-#   && python3 setup.py install
-
+# Install extra tooling
 WORKDIR /home/
 COPY ./requirements.txt ./requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
+# RUN pip install introcs
+# RUN pip install pandas
+# RUN pip install markupsafe==2.0.1
+# Install pcg-gazebo from source, https://github.com/boschresearch/pcg_gazebo#from-source
+# The pip package will not work due to bad/missing depencencies
+RUN apt-get install -y git libspatialindex-dev pybind11-dev libgeos-dev libfcl-dev liboctomap-dev
+RUN git clone https://github.com/boschresearch/pcg_gazebo.git \
+  && cd pcg_gazebo \
+  && pip install .
 
-WORKDIR /home/
-RUN pip install introcs
-RUN pip install pandas
-RUN pip install markupsafe==2.0.1
-RUN pip install pcg-gazebo
 
-
+# And finally the ROS components
 WORKDIR /home/
 RUN mkdir -p catkin_ws/src
 COPY ./ catkin_ws/src/mission_planner
@@ -64,4 +52,4 @@ RUN \
   rosdep update && \
   rosdep install --from-paths ./src --ignore-packages-from-source --rosdistro noetic -y
 
-CMD /home/catkin_ws/src/mission_planner/entrypoint.sh
+CMD ["bash", "-c", "/home/catkin_ws/src/mission_planner/entrypoint.sh"]
