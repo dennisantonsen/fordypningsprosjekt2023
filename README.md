@@ -26,6 +26,7 @@ Tidligere arbeid:
 - [Components](#components)
 - [How to run](#how-to-run)
 - [How to develop](#how-to-develop)
+  - [Development workflow](./development-workflow.md)
 - [Knows issues](#known-issues)
 
 
