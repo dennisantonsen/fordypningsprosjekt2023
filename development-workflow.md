@@ -153,6 +153,9 @@ Highfive, grab a coffe and get going with the next feature.
 
 #### Rebase manually
 
+Some times we need to ensure our changes get merged into the main branch at the very end.  
+This is what we use _rebase_ for - we squash all our tiny commits into one, then merge that one commit on top of everything else in git history.
+
 ```sh
 # Squash all your commits into a single commit to make it easier to read for the code reviewer by using git rebase
 git checkout "feature-A" # Make sure you are in your feature branch
