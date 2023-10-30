@@ -100,7 +100,25 @@ For great examples please read
    ```
 
 _Iterate_
-1. Develop, commit and push changes to your feature branch
+1. Develop, commit and push changes to your feature branch  
+   ```sh
+   # Stage all changed files
+   # You add specific files as well, but most often you want to add everything you have changed
+   # git add -A  # Stages all changes, anywhere
+   # git add .   # Stages new files and modifications, without deletions, for the current directory and its subdirectories
+   # git add -u  # Stages modifications and deletions, without new files
+   git add .
+   
+   # Verify that git has staged the files you want
+   git status
+   
+   # If ok then commit them along with a short description of what this commit entails
+   git commit -m "Refactored computation for tracked vehicles"
+   
+   # And finally push your update to the remote repo
+   git push
+   ```
+1. Develop some more, to to step 1
 1. When you think you are done, go to step 2
 
 #### Step 2: Create a pull request and survive code review
