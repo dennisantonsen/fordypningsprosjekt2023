@@ -118,8 +118,7 @@ _Iterate_
    # And finally push your update to the remote repo
    git push
    ```
-1. Develop some more, to to step 1
-1. When you think you are done, go to step 2
+1. Repeat the above until you think the task is done
 
 #### Step 2: Create a pull request and survive code review
 
