@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
+import datetime
+import json
+from math import inf
+from time import sleep, time
+
+import constants
+import numpy as np
+import pandas as pd
+import pcg_gazebo.simulation
 import rospy
+import trimesh
+from POI import POI
 from utils import *
 from walkway import Walkway
-from POI import POI
-from time import sleep, time
-import datetime
-import constants
-import trimesh
-import numpy as np
-from math import inf
-import pandas as pd
-import json
-import pcg_gazebo.simulation
+
 
 class MissionPlanner:
     def __init__(self, model_name, points_of_interest = []):
@@ -36,15 +38,6 @@ class MissionPlanner:
             walkway_filename = model_name + '-walkway.obj'
         )
 
-        # TODO: Instead of this "oog så har vi juksa litt" method, we should be able to find the walkway line programatically
-        #if model_name == 'huldra-smaller':
-            #self.wp.walkway_line = constants.huldra_smaller_walkway_line # Use sorted walkway line constant
-        #elif model_name == 'huldra-small-area':
-           # self.wp.walkway_line = constants.huldra_small_area_walkway_line # Use sorted walkway line constant
-       # elif model_name == 'huldra-big':
-            #self.wp.walkway_line = constants.huldra_big_walkway_line # Use sorted walkway line constant
-       # elif model_name == 'huldra-medium':
-           # self.wp.walkway_line = constants.huldra_medium_walkway_line # Use sorted walkway line constant
 
         self.walkway_line = self.wp.get_walkway_line()
         publish_markers(self.walkway_line)
