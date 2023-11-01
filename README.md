@@ -118,6 +118,8 @@ It is a simple wrapper for calling `docker compose` and set permissions, then cl
 # Press CTRL+C and the script will clean up any lingering docker resources and bindings
 ```
 
+If WSL cannot find Docker, make sure that Docker Desktop is running.
+
 ### Expected output
 
 TODO: clean up, add missing outputs
