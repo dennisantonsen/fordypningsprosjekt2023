@@ -7,7 +7,6 @@ from time import sleep, time
 import constants
 import numpy as np
 import pandas as pd
-import pcg_gazebo.simulation
 import rospy
 import trimesh
 from POI import POI
@@ -96,25 +95,15 @@ class MissionPlanner:
                 continue
 
 
-            #will_inspector_crash = self.will_inspector_crash_at_point(possible_inspection_point)
             obstacles_count = self.get_obstacles_between(possible_inspection_point, poi, self.mesh_file)
-            #obstacles_around_count = self.get_obstacles_around(possible_inspection_point, poi, self.mesh_file)
-            #score_from_image_analysis = self.get_score_from_image_analysis(possible_inspection_point, poi.point)
+
 
             # Lower score is better
             score = (100)*obstacles_count + (100)*angle_towards_poi + (1)*distance_to_poi # TODO: Find a better score function
-            #score = ( (100)*(obstacles_count + obstacles_around_count) )/5 + (100)*angle_towards_poi + (1)*distance_to_poi # Ray-around
-            #score = distance_to_poi
-            #score = angle_towards_poi
-            #score = obstacles_count
-            #score = obstacles_around_count
+
             
             possible_inspection_points_scores[i] = score
         
-        #print('Inspection scores for point with identifier', poi.identifier)
-        #print(possible_inspection_points_scores)
-        #print('Lowest score:', min(possible_inspection_points_scores))
-        #print('Highest score:', max(possible_inspection_points_scores))
 
         if min(possible_inspection_points_scores) == inf:
             self.count_discarded_all_inf += 1
@@ -148,10 +137,7 @@ class MissionPlanner:
         ray_direction = np.array(normalize(gazebo_to_obj_coordinates_only_roll([p2.x - p1.x, p2.y - p1.y, p2.z - p1.z])))
 
         intersections, _, face_indices = self.mesh.ray.intersects_location(ray_origins=[ray_origin], ray_directions=[ray_direction])
-
-        #print()
-        #print(intersections)
-        #print(face_indices)
+    
 
         distance_p1_p2 = get_distance_between_points(p1, p2)
 
@@ -185,12 +171,6 @@ class MissionPlanner:
         count = 4 #4
         circle_points = get_points_on_circle(s, r, poi_p1_direction, count)
 
-        #publish_marker(s, r=1, g=0, b=0)
-        #for point in circle_points:
-        #    print(point)
-        #    publish_marker(point)
-        
-
         # Then, count obstacles between p1 and poi along N vectors from poi to the circle.
         obstacles_count = 0
         for point in circle_points:
@@ -218,7 +198,6 @@ class MissionPlanner:
             
             publish_marker(points_of_interest[i].point)
 
-            #send_one_pose_to_inspector(points_of_interest[i], inspection_poses[i])
         return inspection_poses
 
     def search_for_inspection_pose(self, poi_point):
@@ -228,7 +207,7 @@ class MissionPlanner:
         distances = [None]*len(possible_inspection_points)
         min_distance = inf
         current_search_point_score = 0
-        #print("Possible inspection points: ", possible_inspection_points)
+
         #Find the possible inspection point closest to the POI to decide where to start search
         for i in range (0,len(possible_inspection_points)):
             distances[i] = get_distance_between_points(possible_inspection_points[i], poi_point.point)
@@ -236,8 +215,7 @@ class MissionPlanner:
                 min_distance = distances[i]
                 start_search_point = possible_inspection_points[i]
                 start_search_point_score = min_distance
-                #print("Min dist: ", min_distance)
-                #print("Start search at: ", start_search_point)
+
         
         # Create empty dataframe to store Coordinates and Scores: 
         searches_df = pd.DataFrame({'Coordinate' : [], 'Score' : []})
@@ -250,15 +228,13 @@ class MissionPlanner:
         last_search_point = start_search_point
         current_search_point = start_search_point
         current_search_point_score = start_search_point_score
+
         #Add current datapoints score into dataframe
         new_row = pd.DataFrame([[current_search_point, current_search_point_score]], columns=['Coordinate', 'Score'])
         searches_df = pd.concat([searches_df, new_row]).reset_index(drop=True)
         #print("dataframe: ", searches_df)
 
         while abs(current_angle) < abs(last_angle):
-            #current_search_point_score = 0
-            #min_distance = inf #Prøver dette
-             #Update temporary search variable
             temp_search_point = [current_search_point.x,current_search_point.y,current_search_point.z, 0]
             temp_search_point = -quaternion_multiply(poi_orientation, temp_search_point)
             temp_search_point = quaternion_multiply(temp_search_point, quaternion_conjugate(poi_orientation))
@@ -270,21 +246,15 @@ class MissionPlanner:
                     min_distance = distances[i]
                     current_search_point = possible_inspection_points[i]
                     current_search_point_score = min_distance
-                #current_search_point = Point(current_search_point[0], current_search_point[1], current_search_point[2])
-            #print("Current search: ", current_search_point)
+
             last_angle = current_angle
-            #print("Last angle: ", last_angle)
+
             current_angle = mission_planner.get_angle_towards_poi(poi_point, current_search_point)
-            #print("Angle: ", current_angle)
+
             current_search_point_score += 100*current_angle
             new_row = pd.DataFrame([[current_search_point, current_search_point_score]], columns=['Coordinate', 'Score'])
             searches_df = pd.concat([searches_df, new_row]).reset_index(drop=True)
-            ##TO DO: Check visibility towards point and add scoring functions 
-            # If bad -> go to the search point with the next highest score -> repeat
-            #Sort search dataframe based on scores:
-            #Kan denne flyttes utenfor whilen?
-            #print("df: ", searches_df)
-            
+
             for i in range(1,len(height_interval)):
                 current_search_point_vertical = Point(current_search_point.x, current_search_point.y, current_search_point.z+height_interval[i])
                 print("current search: ", current_search_point_vertical)
@@ -295,14 +265,15 @@ class MissionPlanner:
             current_search_point = searches_df['Coordinate'][i]
             current_search_point_score = searches_df['Score'][i]
             obstacles_around_count = self.get_obstacles_around(current_search_point, poi_point, self.mesh_file) 
-                #print("obstacles between: ", obstacles_between_count)
+
             current_search_point_score += 100*obstacles_around_count
-            #print("Score: ", current_search_point_score)
+
             searches_df.at[i, 'Score'] = current_search_point_score
         
         #Sort dataframe by score, low to high
         sorted_searches_df = searches_df.sort_values(by=['Score'])
         print("Sorted df: ", sorted_searches_df)
+
         #Collect the coordinates of the point with lowest score
         current_search_point = sorted_searches_df['Coordinate'].iloc[0]
         inspection_orientation = get_orientation_towards_point(current_search_point, poi_point.point)
@@ -379,19 +350,10 @@ if __name__ == '__main__':
         points_of_interest = []
         if huldra_model == 'huldra-smaller':
             points_of_interest = constants.huldra_smaller_points_of_interest
-            #for i in range (0,len(points_of_interest)):
-                #publish_marker(points_of_interest[i].point)
-                #marker_publisher = rospy.Publisher('visualization_marker', Marker)
-                #show_text_in_rviz(marker_publisher, points_of_interest[i].point, text=str(i))
-        if huldra_model == 'huldra-medium':
-            points_of_interest = constants.huldra_medium_points_of_interest
-        if huldra_model == 'huldra-mini':
-            points_of_interest = constants.huldra_mini_points_of_interest
 
         mission_planner = MissionPlanner(huldra_model, points_of_interest)
 
         time_before = time()
-        #inspection_poses = mission_planner.find_inspection_poses()
         inspection_poses = mission_planner.get_inspection_poses()
         time_after = time()
         time_difference = time_after - time_before
