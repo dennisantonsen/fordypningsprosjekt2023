@@ -132,7 +132,41 @@ TODO: clean up, add missing outputs
 
 ## How to develop
 
-TODO: describe how and where to modify code, how to test etc.
+When you start up the simulation as described in paragraph [How to run](#how-to-run) then everything is build and run automatically, which can take some time to complete.  
+To get at faster feedback loop when developing you should enter the docker container running the code you are working on and restart the script directly via commands.  
+
+As long as the files your are working on are _mounted_ into the container then your are good to go.
+
+
+### Start
+
+You will want to use 2-3 terminal sessions for this as it is easier to see what is going on where, and your favorite editor for working on the code.
+
+#### _Terminal session 1: Build and start the ROS containers_
+
+Follow the instructions in paragraph [How to run](#how-to-run)
+
+
+#### _Terminal session 2: Run commands inside the ROS containers_
+
+```sh
+# Get an overview of all containers that are running
+docker ps 
+
+# Open a bash session into fex mission_planner
+docker exec -it mission_planner bash
+
+# From inside the container you can then run any unix or ROS command
+# TODO: Add examples of viewing, stopping and starting ROS processes
+
+# Now you can start changing code then restart the ROS code from inside the container to test it
+
+```
+
+### Stop
+
+Follow the instructions in paragraph [How to run](#how-to-run)
+
 
 
 ## Known issues
