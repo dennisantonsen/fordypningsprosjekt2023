@@ -73,6 +73,9 @@ services:
     volumes:
       - ./resources/huldra-models:/home/catkin_ws/src/mission_planner/src/huldra-models:rw
       - ./mission_planner/output:/home/catkin_ws/src/mission_planner/output:rw
+      - type: bind
+        source: ./mission_planner/src
+        target: /home/catkin_ws/src/mission_planner/src
     env_file:
       - config.env
     depends_on:
