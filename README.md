@@ -156,10 +156,13 @@ docker ps
 # Open a bash session into fex mission_planner
 docker exec -it mission_planner bash
 
-# From inside the container you can then run any unix or ROS command
-# TODO: Add examples of viewing, stopping and starting ROS processes
+# From inside the container you can then run any unix or ROS command like rosnode for exploring the nodes, https://wiki.ros.org/rosnode
+# Each container has an entrypoint script, `entrypoint.sh`, that shows you how the rosnode is started
+# Example: mission_planner/entrypoint.sh , see "roslaunch"
+# So if we want to run the mission_planner again then we simply call
+roslaunch --wait inspector inspector.launch
 
-# Now you can start changing code then restart the ROS code from inside the container to test it
+# Now you can start changing code then restart the ROS node from inside the container to test it
 
 ```
 
