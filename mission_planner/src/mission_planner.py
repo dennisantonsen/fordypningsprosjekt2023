@@ -93,8 +93,13 @@ class MissionPlanner:
                 possible_inspection_points_scores[i] = inf
                 self.count_discarded_too_big_angle += 1
                 continue
-
-
+            """
+            # Objects between the inspection point and POI will not make a viable inspection
+            if obstacles_count != 0:
+                possible_inspection_points_scores[i] = inf
+                self.count_discarded_too_big_angle += 1
+                continue
+            """
             obstacles_count = self.get_obstacles_between(possible_inspection_point, poi, self.mesh_file)
 
 
