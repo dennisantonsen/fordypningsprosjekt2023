@@ -1,0 +1,263 @@
+27-4453PV
+  "yCoordinate": 128059,
+  "xCoordinate": 297490,
+  "zCoordinate": 47474,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+27-4510PV
+  "yCoordinate": 123157,
+  "xCoordinate": 295153,
+  "zCoordinate": 47268,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+27-4511PV
+  "yCoordinate": 124146,
+  "xCoordinate": 294064,
+  "zCoordinate": 47289,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+27-4512PV
+  "yCoordinate": 123157,
+  "xCoordinate": 294496,
+  "zCoordinate": 47627,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+27-4541PV
+  "yCoordinate": 123157,
+  "xCoordinate": 295814,
+  "zCoordinate": 47533,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+27-4542PV
+  "yCoordinate": 123157,
+  "xCoordinate": 295815,
+  "zCoordinate": 47605,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+27-4501PV
+  "yCoordinate": 132172,
+  "xCoordinate": 297544,
+  "zCoordinate": 47435,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+27-4502PV
+  "yCoordinate": 130951,
+  "xCoordinate": 297544,
+  "zCoordinate": 47447,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+27-4514PV
+  "yCoordinate": 131238,
+  "xCoordinate": 297309,
+  "zCoordinate": 47041,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+27-4503PV
+  "yCoordinate": 132272,
+  "xCoordinate": 298444,
+  "zCoordinate": 47434,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+27-4504PV
+  "yCoordinate": 130951,
+  "xCoordinate": 298444,
+  "zCoordinate": 47447,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+27-4515PV
+  "yCoordinate": 131238,
+  "xCoordinate": 298680,
+  "zCoordinate": 47041,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+43-4505VF
+  "yCoordinate": 134195,
+  "xCoordinate": 297545,
+  "zCoordinate": 47407,
+  roll:  0
+  pitch: 0
+  yaw:   -3*pi/4
+
+43-4516VF
+  "yCoordinate": 133208,
+  "xCoordinate": 297545,
+  "zCoordinate": 47918,
+  roll:  0
+  pitch: 0
+  yaw:   0
+
+43-4506VF
+  "yCoordinate": 134195,
+  "xCoordinate": 298445,
+  "zCoordinate": 47407,
+  roll:  0
+  pitch: 0
+  yaw:   -3*pi/4
+
+43-4517VF
+  "yCoordinate": 133208,
+  "xCoordinate": 298445,
+  "zCoordinate": 47918,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+43-4508VF
+  "yCoordinate": 137273,
+  "xCoordinate": 298449,
+  "zCoordinate": 47423,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+50-4581WS
+  "yCoordinate": 134900,
+  "xCoordinate": 296389,
+  "zCoordinate": 45422,
+  roll:  0
+  pitch: 0
+  yaw:   0
+
+50-4567WS
+  "yCoordinate": 137894,
+  "xCoordinate": 297460,
+  "zCoordinate": 45813,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+50-4565WS
+  "yCoordinate": 128529,
+  "xCoordinate": 298841,
+  "zCoordinate": 47950,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+53-4571WD
+  "yCoordinate": 118320,
+  "xCoordinate": 298638,
+  "zCoordinate": 47376,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+63-4490AI
+  "yCoordinate": 115725,
+  "xCoordinate": 293101,
+  "zCoordinate": 45929,
+  roll:  0
+  pitch: 0
+  yaw:   0
+
+63-4489AI
+  "yCoordinate": 115853,
+  "xCoordinate": 293101,
+  "zCoordinate": 45929,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+63-4477AI
+  "yCoordinate": 120006,
+  "xCoordinate": 299356,
+  "zCoordinate": 45567,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+63-4478AI
+  "yCoordinate": 123182,
+  "xCoordinate": 299356,
+  "zCoordinate": 45567,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+63-4460AP
+  "yCoordinate": 118870,
+  "xCoordinate": 298545,
+  "zCoordinate": 47396,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+63-4461AP
+  "yCoordinate": 118870,
+  "xCoordinate": 298704,
+  "zCoordinate": 47554,
+  roll:  0
+  pitch: -pi/2
+  yaw:   0
+
+63-4479AI
+  "yCoordinate": 125856,
+  "xCoordinate": 299356,
+  "zCoordinate": 45567,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+63-4480AI
+  "yCoordinate": 132425,
+  "xCoordinate": 300000,
+  "zCoordinate": 45567,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+63-4481AI
+  "yCoordinate": 122858,
+  "xCoordinate": 298747,
+  "zCoordinate": 48435,
+  roll:  0
+  pitch: 0
+  yaw:   pi
+
+63-4482AI
+  "yCoordinate": 125312,
+  "xCoordinate": 295485,
+  "zCoordinate": 48435,
+  roll:  0
+  pitch: 0
+  yaw:   0
+
+64-4462GI
+  "yCoordinate": 118620,
+  "xCoordinate": 298545,
+  "zCoordinate": 47396,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+64-4463GI
+  "yCoordinate": 118620,
+  "xCoordinate": 298704,
+  "zCoordinate": 47554,
+  roll:  0
+  pitch: -pi/2
+  yaw:   0

@@ -1,0 +1,320 @@
+{
+  "accessors": [
+    {
+      "name": "BOX_6_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -117.69996643066406,
+        29.440000534057617,
+        310.82501220703125
+      ],
+      "max": [
+        -109.99996948242188,
+        29.46000099182129,
+        311.82501220703125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "BOX_6_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "BOX_6_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 36,
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "BOX_14_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.001-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -119.6999740600586,
+        29.440000534057617,
+        294.5
+      ],
+      "max": [
+        -118.69996643066406,
+        29.46000099182129,
+        309.82501220703125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 288
+    },
+    {
+      "name": "BOX_14_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.001-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 1,
+      "byteOffset": 288
+    },
+    {
+      "name": "BOX_14_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.001-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 36,
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 72
+    },
+    {
+      "name": "RTORUS_1_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.002-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 56,
+      "min": [
+        -119.69964599609375,
+        29.440000534057617,
+        309.8243103027344
+      ],
+      "max": [
+        -117.69964599609375,
+        29.46000099182129,
+        311.8243103027344
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 576
+    },
+    {
+      "name": "RTORUS_1_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.002-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 56,
+      "min": [
+        -0.9876939654350281,
+        -1,
+        -0.9866092801094055
+      ],
+      "max": [
+        0.9866092801094055,
+        1,
+        0.9876450896263123
+      ],
+      "type": "VEC3",
+      "bufferView": 1,
+      "byteOffset": 576
+    },
+    {
+      "name": "RTORUS_1_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.002-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 120,
+      "min": [
+        0
+      ],
+      "max": [
+        55
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 144
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "huldra-smaller-walkway",
+      "byteLength": 2880,
+      "uri": "data:application/octet-stream;base64,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AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/HzcnPgAAAABRkHy/pLaEPgAAAAAeQHe/HzcnPgAAAABRkHy/FwQnPgAAAABtkny/EZa4PgAAAADOyG6/IqeEPgAAAAAyQne/378KPwAAAAB1I1e/pukgPwAAAAAUG0e/SB5HPwAAAICv5SC/dSNXPwAAAADfvwq/mcZuPwAAAAB4obi+HkB3PwAAAICktoS+X5F8PwAAAICbHSe+wkF3PwAAAABpqoS+bZJ8PwAAAAAXBCe+bZJ8PwAAAAAXBCe+AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAg9l8vwAAAAASJyA+Up53vwAAAICu8IE+g9l8vwAAAAASJyA+T9Z8vwAAAADXdyA+NzNvvwAAAAC3a7Y+7Z93vwAAAIBr5IE+B3hXvwAAAABmPAo/NE1HvwAAAACMqyA/jKsgvwAAAAA0TUc/wTcKvwAAAAABe1c/hnu2vgAAAAAzMG8/rvCBvgAAAABSnnc/+6ogvgAAAABI1Hw/a+SBvgAAAIDtn3c/13cgvgAAAIBP1nw/13cgvgAAAIBP1nw/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAAAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAAAABAAIAAwAEAAUABAAGAAUABAAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoADQAOAA8AEAARABIAEAATABEAEwAUABEAEwAVABQAFQAWABQAFQAXABYAFwAYABYAFwAZABgAGQAaABgAGQAbABoAHAAdAB4AHwAgACEAIAAiACEAIAAjACIAIwAkACIAIwAlACQAJQAmACQAJQAnACYAJwAoACYAKQAqACsALAAtAC4ALAAvAC0ALwAwAC0ALwAxADAAMQAyADAAMQAzADIAMwA0ADIAMwA1ADQANQA2ADQANQA3ADYA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 1248,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 1248,
+      "byteOffset": 1248,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 384,
+      "byteOffset": 2496,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Color_215Translucent(0.00)",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          0.501961,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.550000015
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "Color_215Translucent(0.00).001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          0.501961,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.550000015
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "Color_215Translucent(0.00).002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          0.501961,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.550000015
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "BOX_6_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "BOX_14_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.001-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 3,
+            "NORMAL": 4
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RTORUS_1_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.002-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7
+          },
+          "indices": 8,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "BOX_6_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh",
+      "mesh": 0
+    },
+    {
+      "name": "BOX_14_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.001",
+      "mesh": 1
+    },
+    {
+      "name": "RTORUS_1_of_SUBSTRUCTURE_/ESCAPE-MEZZ/FLOOR_Mesh.002",
+      "mesh": 2
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

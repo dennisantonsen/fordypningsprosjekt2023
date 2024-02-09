@@ -1,0 +1,101 @@
+version: '3'
+
+services: 
+  ros_noetic: 
+    container_name: ros_noetic
+    build:
+      context: ./ros_noetic
+      dockerfile: Dockerfile
+    ports:
+      - "11311:11311"
+    environment:
+      - ROS_MASTER_URI=http://ros_noetic:11311
+  
+  gazebo:
+    container_name: gazebo
+    build:
+      context: ./gazebo
+      dockerfile: Dockerfile
+    environment: 
+      - ROS_MASTER_URI=http://ros_noetic:11311
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_SOFTWARE=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./resources/huldra-models:/root/.gazebo/models/huldra-models:rw
+    ports:
+      - "11345:11345"
+    depends_on:
+      - ros_noetic
+    #devices:
+     # - "/dev/dri:/dev/dri"
+  
+  rviz:
+    container_name: rviz
+    build:
+      context: ./rviz
+      dockerfile: Dockerfile
+    environment:
+      - ROS_MASTER_URI=http://ros_noetic:11311
+      - GAZEBO_MASTER_URI=http://gazebo:11345
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    depends_on:
+      - ros_noetic
+  
+  model_spawner:
+    container_name: model_spawner
+    build:
+      context: ./model_spawner
+      dockerfile: Dockerfile
+    environment:
+      - ROS_MASTER_URI=http://ros_noetic:11311
+      - GAZEBO_MASTER_URI=http://gazebo:11345
+    volumes:
+      - ./resources/huldra-models:/home/catkin_ws/src/model_spawner/src/huldra-models:rw
+    env_file:
+      - config.env
+    depends_on:
+      - ros_noetic
+      - gazebo
+  
+  mission_planner:
+    container_name: mission_planner
+    build:
+      context: ./mission_planner
+      dockerfile: Dockerfile
+    environment:
+      - ROS_MASTER_URI=http://ros_noetic:11311
+      - GAZEBO_MASTER_URI=http://gazebo:11345
+    volumes:
+      - ./resources/huldra-models:/home/catkin_ws/src/mission_planner/src/huldra-models:rw
+      - ./mission_planner/output:/home/catkin_ws/src/mission_planner/output:rw
+      - type: bind
+        source: ./mission_planner/src
+        target: /home/catkin_ws/src/mission_planner/src
+    env_file:
+      - config.env
+    depends_on:
+      - ros_noetic
+      - gazebo
+      - inspector
+  
+  inspector:
+    container_name: inspector
+    build:
+      context: ./inspector
+      dockerfile: Dockerfile
+    environment:
+      - ROS_MASTER_URI=http://ros_noetic:11311
+      - GAZEBO_MASTER_URI=http://gazebo:11345
+    volumes:
+      - ./inspector/output:/home/catkin_ws/src/inspector/output:rw
+      - type: bind
+        source: ./inspector/src
+        target: /home/catkin_ws/src/inspector/src
+    depends_on:
+      - ros_noetic
+      - gazebo

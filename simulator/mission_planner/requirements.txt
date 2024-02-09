@@ -1,0 +1,6 @@
+trimesh
+rtree
+networkx
+introcs
+pandas
+markupsafe==2.0.1

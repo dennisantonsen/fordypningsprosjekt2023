@@ -1,1 +1,0 @@
-project("model_spawner")
