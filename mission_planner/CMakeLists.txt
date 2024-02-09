@@ -1,1 +1,0 @@
-project("mission_planner")

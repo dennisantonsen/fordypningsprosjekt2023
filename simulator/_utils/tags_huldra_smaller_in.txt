@@ -1,0 +1,122 @@
+20-2000VF
+  "xCoordinate": 304500,
+  "yCoordinate": 117014,
+  "zCoordinate": 30016,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+20-2007VF
+  "xCoordinate": 304950,
+  "yCoordinate": 115739,
+  "zCoordinate": 31149,
+  roll:  0
+  pitch: 0
+  yaw:   -pi
+
+20-2003VF
+  "xCoordinate": 307900,
+  "yCoordinate": 114401,
+  "zCoordinate": 30099,
+  roll:  0
+  pitch: -pi/4
+  yaw:   -pi
+
+20-2006PL
+  "xCoordinate": 310292,
+  "yCoordinate": 112550,
+  "zCoordinate": 30238,
+  roll:  0
+  pitch: 0
+  yaw:   -pi
+
+
+
+
+20-2001PL
+  "xCoordinate": 310117,
+  "yCoordinate": 111588,
+  "zCoordinate": 30156,
+  roll:  0
+  pitch: 0
+  yaw:   -pi
+
+20-2031PL
+  "xCoordinate": 309125,
+  "yCoordinate": 112772,
+  "zCoordinate": 29722,
+  roll:  0
+  pitch: -pi/2
+  yaw:   0
+
+20-2001WI
+  "xCoordinate": 301050,
+  "yCoordinate": 113725,
+  "zCoordinate": 29311,
+  roll:  0
+  pitch: 0
+  yaw:   -pi/2
+
+20-2002WI
+  "xCoordinate": 305100,
+  "yCoordinate": 113725,
+  "zCoordinate": 29311,
+  roll:  0
+  pitch: 0
+  yaw:   pi/2
+
+20-2003WI
+  "xCoordinate": 304680,
+  "yCoordinate": 111975,
+  "zCoordinate": 29602,
+  roll:  0
+  pitch: -pi/4
+  yaw:   pi/2
+
+20-2004WI
+  "xCoordinate": 302844,
+  "yCoordinate": 113725,
+  "zCoordinate": 29581,
+  roll:  0
+  pitch: -pi/4
+  yaw:   -pi
+
+20-2005WI
+  "xCoordinate": 305985,
+  "yCoordinate": 113425,
+  "zCoordinate": 29445,
+  roll:  0
+  pitch: -pi/4
+  yaw:   -pi
+
+20-2006WI
+  "xCoordinate": 306387,
+  "yCoordinate": 113703,
+  "zCoordinate": 29456,
+  roll:  0
+  pitch: -pi/4
+  yaw:   -pi
+
+20-2001VF
+  "xCoordinate": 304041,
+  "yCoordinate": 115739,
+  "zCoordinate": 30729,
+  roll:  0
+  pitch: -pi/2
+  yaw:   0
+
+20-2008VF
+  "xCoordinate": 305200,
+  "yCoordinate": 115739,
+  "zCoordinate": 31296,
+  roll:  0
+  pitch: 0
+  yaw:   -pi
+
+43-4507VF
+  "xCoordinate": 304477,
+  "yCoordinate": 118245,
+  "zCoordinate": 31027,
+  roll:  0
+  pitch: 0
+  yaw:   -pi

@@ -1,0 +1,1 @@
+POI('62-2828OF', obj_to_gazebo_point([-94.314, 25.678, 281.183]), orientation_from_euler(0, 0, 0)),

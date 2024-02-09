@@ -1,0 +1,3 @@
+<launch>
+  <node name="mission_planner" pkg="mission_planner" type="mission_planner.py" output="screen" />
+</launch>

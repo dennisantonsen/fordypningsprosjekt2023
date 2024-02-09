@@ -1,3 +1,0 @@
-<launch>
-  <node name="model_spawner" pkg="model_spawner" type="model_spawner.py" output="screen" />
-</launch>

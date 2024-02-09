@@ -1,0 +1,75 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="my_robot">
+    <static>true</static>
+    <link name='chassis'>
+      <pose>0 0 .1 0 0 0</pose>
+
+      <collision name='collision'>
+          <geometry>
+          <box>
+              <size>.4 .2 .1</size>
+          </box>
+          </geometry>
+      </collision>
+
+      <visual name='visual'>
+          <geometry>
+          <box>
+              <size>.4 .2 .1</size>
+          </box>
+          </geometry>
+      </visual>
+    </link>
+
+    <link name='camera_sensor_link'>
+      <pose>0.2 0 0.2 0 0 0</pose>
+      <sensor type="camera" name="camera">
+        <update_rate>30.0</update_rate>
+        <alwaysOn>1</alwaysOn>
+
+        <camera name="__default__">
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>3000</far>
+          </clip>
+        </camera>
+
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>1</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>inspector_robot/camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+    </link>
+
+    <include>
+      <uri>model://camera</uri>
+      <pose>0.2 0 0.2 0 0 0</pose>
+    </include>
+    <joint name="camera_joint" type="fixed">
+      <child>camera::link</child>
+      <parent>chassis</parent>
+    </joint>
+    <joint name="camera_sensor_joint" type="fixed">
+      <child>camera_sensor_link</child>
+      <parent>camera::link</parent>
+    </joint>
+
+  </model>
+</sdf>
