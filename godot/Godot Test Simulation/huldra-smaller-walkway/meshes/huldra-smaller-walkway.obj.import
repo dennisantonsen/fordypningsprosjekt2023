@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bf15pr0vuunfp"
+path="res://.godot/imported/huldra-smaller-walkway.obj-751a277c2eb0f57a0a80d03ced0f53a9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/huldra-smaller-walkway.obj-751a277c2eb0f57a0a80d03ced0f53a9.mesh"]
+
+source_file="res://huldra-smaller-walkway/meshes/huldra-smaller-walkway.obj"
+dest_files=["res://.godot/imported/huldra-smaller-walkway.obj-751a277c2eb0f57a0a80d03ced0f53a9.mesh", "res://.godot/imported/huldra-smaller-walkway.obj-751a277c2eb0f57a0a80d03ced0f53a9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

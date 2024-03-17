@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://robot.gd" id="1_gh3ik"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2omf3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gadc"]
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im14s"]
-albedo_color = Color(1, 1, 0.580392, 1)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2omf3"]
+material = SubResource("StandardMaterial3D_5gadc")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhuff"]
 
@@ -15,7 +16,6 @@ script = ExtResource("1_gh3ik")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_2omf3")
-surface_material_override/0 = SubResource("StandardMaterial3D_im14s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -11,7 +11,7 @@ func _ready():
 func _on_valve_inspected():
 	valve_index += 1
 	if valve_index <= len(valves)-1:
-		print('Moving on to Valve ' + str(valve_index+1))
+		print('--- Moving on to Valve ' + str(valve_index+1) + ' ---\n')
 		_ready()
 	else:
 		print('Inspection complete')
