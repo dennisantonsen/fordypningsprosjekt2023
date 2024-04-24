@@ -36,3 +36,19 @@ Verify json output using ISAR Api:
 1. Run ISAR api and ISAR-Robot (the api need something to talk to)
 1. Open ISAR in a browser, inspect api and upload the json
 1. Inspect output from ISAR
+
+
+
+
+## How to use
+
+### Configure Equinor's `isar-turtlebot` simulator for use with our models
+
+1. Clone the simulator repo into the `simulator/` directory  
+   ```sh
+   cd simulator
+   git clone https://github.com/equinor/isar-turtlebot
+   ```
+
+1. Copy models to the `isar-turtlebot`:
+   1. `cp -r world/huldra isar-turtlebot/models/`
