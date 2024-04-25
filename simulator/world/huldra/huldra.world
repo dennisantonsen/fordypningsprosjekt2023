@@ -50,7 +50,9 @@
     </gui>
 
     <!-- Huldra -->
-    
+    <include>
+      <uri>model://huldra_smaller</uri>
+    </include>
 
   </world>
 </sdf>

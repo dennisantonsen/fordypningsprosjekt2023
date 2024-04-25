@@ -50,5 +50,13 @@ Verify json output using ISAR Api:
    git clone https://github.com/equinor/isar-turtlebot
    ```
 
-1. Copy models to the `isar-turtlebot`:
-   1. `cp -r world/huldra isar-turtlebot/models/`
+1. Copy `sdf` models to the `isar-turtlebot`:  
+   `cp -r world/huldra/sdf/huldra* isar-turtlebot/models/`
+1. Copy simulator config to the `isar-turtlebot`:  
+   `cp -r world/huldra/huldra.cfg isar-turtlebot/config/`
+
+### Run
+
+```sh
+WORLD_NAME=huldra docker compose up --build
+```
