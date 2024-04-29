@@ -62,4 +62,6 @@ WORLD_NAME=huldra docker compose up --build
 
 # Error - I'm still missing the planner map
 # [ERROR] [1714128993.649111124]: Map_server could not open /home/catkin_ws/src/isar_turtlebot/maps/huldra.yaml. 
+
+# https://automaticaddison.com/how-to-create-a-map-for-ros-from-a-floor-plan-or-blueprint/
 ```
