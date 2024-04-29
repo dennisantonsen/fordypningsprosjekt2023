@@ -64,4 +64,5 @@ WORLD_NAME=huldra docker compose up --build
 # [ERROR] [1714128993.649111124]: Map_server could not open /home/catkin_ws/src/isar_turtlebot/maps/huldra.yaml. 
 
 # https://automaticaddison.com/how-to-create-a-map-for-ros-from-a-floor-plan-or-blueprint/
+# Add docker dev env for tooling to create slam map from 2d image based on top-down view of 3d object/model
 ```
