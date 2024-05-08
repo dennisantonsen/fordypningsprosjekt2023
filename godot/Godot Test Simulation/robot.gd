@@ -5,7 +5,7 @@ signal valve_inspected
 
 #################### Settings ####################
 
-#The resolution of which the robot moves along the edges of the walkway. Smaller resolution results in more points visited by the robot and the chance for an optimal inspection point increases
+#The resolution of which the robot moves along the edges of the walkway. Higher resolution / decrease in the walkway_resolution variable (counter-intuitive) results in more points visited by the robot and the chance for an optimal inspection point increases
 @onready var walkway_resolution = 0.75
 
 #The height of the camera (in m) that is attached to the robot
@@ -15,11 +15,11 @@ signal valve_inspected
 #The amount of heights to search, between max and min height. Divides the height interval into "height_resolution" different heights. Ex: height_resolutuon = 5 will divide the interval into 5 different heights and search at these 5 heights. Needs to be an integer
 @onready var height_resolution = 4
 
-#If only one height is to be searched, then specify which height here (in m). Do not need to change this if the algorithm is to check several heights
+#If only one height is to be searched, then specify which height here (in m). Do not need to change this if the algorithm is to check several heights (the height_resolution is set to an integer larger than 1)
 @onready var static_camera_height = 3
 
-#The delay (in sec) is mainly in place for giving the algorithm time to save images from the inspections. This can also be used to delay the algorithm if the user wants to be able to see how the robot moves and position itself when inspecting the valves. Too short delay will result in black/gray inspection images. All other results should be fine however
-@onready var delay = 0.1
+#The delay (in sec) is mainly in place for giving the algorithm time to save images from the inspections. This can also be used to delay the algorithm if the user wants to be able to see how the robot moves and position itself when inspecting the valves. Too short delay will result in black/gray inspection images. All other results (non-image results) should be fine however
+@onready var delay = 0
 
 #The algorithm will cast the corners of an equilateral triangle to assess the visibility from an inspection point. The sides of the makeshift equilateral triangle has the length raycast_triangle_length (in m). Take note that if this variable is set too high, the raycast triangle might jump past an obstacle right next to it, which might not necessarily ensure too good of a view
 @onready var raycast_triangle_length = 0.1
@@ -27,8 +27,8 @@ signal valve_inspected
 #The minimum distance (in m) the camera can be away from the valve. This is to prevent the camera from being too close to the valve or potentially ending up inside the valve
 @onready var min_distance_from_valve = 0.5
 
-#If the variable terminate_early is set to Y (yes), then the algorithm will terminate early if it find that the robot moves further away than the closest point currently found. This will result in the algorithm not finding an optimal inspection pose at a height if this inspection pose will be further away than the most optimal (and thus closest point) found thus far. This will also save screenshots of the optimal poses found
-@onready var terminate_early = "Y"
+#If the variable terminate_early is set to Y (yes), then the algorithm will terminate early if it find that the robot moves further away than the closest point currently found. This will result in the algorithm not finding an optimal inspection pose at a certain height if this inspection pose will be further away than the most optimal (and thus closest point) found thus far (such a pose would need a manual assessment from the resulting inspection images anyways, so it does not remove any automation aspects). This will also save screenshots of the optimal poses found. To deactivate, put any string value other than "Y" (ex. "N")
+@onready var terminate_early = "N"
 
 #Location of the JSON mission file template (either empty or with a previous mission that should be extended with the results from this algorithm iteration)
 @onready var json_file_template = "res://default_turtlebot_empty.json"
@@ -87,11 +87,17 @@ var first_addition_to_file = 1
 
 func _ready():
 	
+	#Giving the algorithm 1 second to load everything
+	await get_tree().create_timer(1).timeout
+	
 	#Making a folder to store results
 	dir = DirAccess.open("res://")
 	dir.make_dir(iteration)
-	dir = DirAccess.open("res://"+str(iteration))
-	dir.make_dir("optimal results")
+	
+	#Making a folder to store images specifically for the optimal inspections in a separate folder, if the algorithm is to terminate early
+	if terminate_early == "Y":
+		dir = DirAccess.open("res://"+str(iteration))
+		dir.make_dir("optimal results")
 	
 	#Initializing list to store current most optimal position and minimal distance found
 	for valve_index in len(valves):
@@ -119,7 +125,7 @@ func _ready():
 		camera.global_transform.origin = Vector3(0, 0, 0)
 		camera.global_transform.origin = Vector3(0, camera_height, 0)
 	
-		#Running the algorithm from scratch for each valve
+		#Running the search algorithm from scratch for each valve
 		for valve_index in len(valves):
 			
 			space_state = get_world_3d().direct_space_state
@@ -142,7 +148,7 @@ func _ready():
 				#Updating the robots position
 				robot_position = global_transform.origin
 				
-				#Check if there are obstacles between the robot and the valve
+				#Check if there are obstacles between the robot and the valve using a ray-cast
 				raycast_origin = point+Vector3(0, camera_height, 0)
 				query = PhysicsRayQueryParameters3D.create(raycast_origin, target_position)
 				query.exclude = [self]
@@ -201,7 +207,7 @@ func _ready():
 								
 				if clear_sight == 1:
 					
-					#Update the optimal inspection point
+					#Update the optimal inspection pose
 					print("Optimal inspection point at camera height ", camera_height,": ", point, ". With direction: ", cast_direction,"\n")
 					
 					#Storing iteration results
@@ -213,8 +219,9 @@ func _ready():
 					#Saving a screenshot of the inspection pose
 					camera.get_viewport().get_texture().get_image().save_png("res://"+iteration+"/"+"results camera height - "+str(camera_height)+"/Valve "+str(valve_index+1)+".png")
 					
+					#Activating the terminate early option will allow for the algorithm to store images of the optimal inspections specifically in a speparate folder
 					if terminate_early == "Y":
-						await get_tree().create_timer(delay).timeout
+						#await get_tree().create_timer(delay).timeout
 						camera.get_viewport().get_texture().get_image().save_png("res://"+iteration+"/optimal results/Valve "+str(valve_index+1)+".png")
 					
 					#The if statement will confirm that the algorithm considers this point the most optimal thus far for all camera heights
@@ -232,8 +239,7 @@ func _ready():
 					#Signal that the inspection is complete
 					emit_signal("valve_inspected")
 					
-					#Quits searching when optimal inspection point is found
-					#As the algorithm starts with the closest inspection point to the valve, and then gradually increases the distance, the consequtive points will in theory be less and less optimal disregarding obstacles
+					#Quits searching when optimal inspection point is found, as the algorithm starts with the closest inspection point to the valve, and then gradually increases the distance, the consequtive points will in theory be less and less optimal disregarding obstacles
 					break
 				else:
 					print("Inspection point is not optimal\n")
@@ -245,14 +251,13 @@ func _ready():
 				
 		#This if statement checks if we have checked all heights (the final height we check will always be the last height of the camera_height_list). If we are done checking all heights, we add the most optimal points automatically to the tasks list
 		if camera_height == camera_height_list[-1]:
-			
 			for vi in len(valves):
-				
 				create_json(vi, current_optimal_point[vi], current_optimal_orientation[vi], current_valve_location[vi], current_optimal_height[vi], first_addition_to_file)
 				first_addition_to_file = 0
 			
 			print("Inspection complete.")
 
+#Function to find the closest points on the walkway to the valve and sort them in order of length (closest point first)
 func find_closest_points(target_position, d):
 	var inspection_points = []
 	var sorted_points = []
@@ -288,10 +293,10 @@ func find_closest_points(target_position, d):
 					if add_point:
 						inspection_points.append({"point": point, "distance": distance})
 
-	# Sorting the points based on distance
+	#Sorting the points based on distance
 	inspection_points.sort_custom(compare_distances)
 
-	# Extracting only the "point" information
+	#Extracting only the "point" information
 	for point_data in inspection_points:
 		sorted_points.append(point_data["point"])
 
@@ -301,6 +306,7 @@ func find_closest_points(target_position, d):
 func compare_distances(a, b):
 	return a["distance"] < b["distance"]
 
+#Function to divide the heights between the minimum and mazimum height in parts based on the height_resolution setting
 func divide_heights(max_height, min_height, n: int):
 	var heights = []
 	var step = (max_height - min_height) / (n - 1)
@@ -311,6 +317,7 @@ func divide_heights(max_height, min_height, n: int):
 	
 	return heights
 
+#Function to create the JSON file containing the optimal poses found during the iteration
 func create_json(valve_index, point, orientation, target_position, camera_height, first_addition_to_file):
 	optimal_inspection_pose["pose"] = {}
 	optimal_inspection_pose["pose"]["position"] = {}
