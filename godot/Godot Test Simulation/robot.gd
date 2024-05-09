@@ -6,14 +6,14 @@ signal valve_inspected
 #################### Settings ####################
 
 #The resolution of which the robot moves along the edges of the walkway. Higher resolution / decrease in the walkway_resolution variable (counter-intuitive) results in more points visited by the robot and the chance for an optimal inspection point increases
-@onready var walkway_resolution = 0.75
+@onready var walkway_resolution = 0.25
 
 #The height of the camera (in m) that is attached to the robot
 @onready var max_camera_height = 3
 @onready var min_camera_height = 0.2
 
 #The amount of heights to search, between max and min height. Divides the height interval into "height_resolution" different heights. Ex: height_resolutuon = 5 will divide the interval into 5 different heights and search at these 5 heights. Needs to be an integer
-@onready var height_resolution = 4
+@onready var height_resolution = 10
 
 #If only one height is to be searched, then specify which height here (in m). Do not need to change this if the algorithm is to check several heights (the height_resolution is set to an integer larger than 1)
 @onready var static_camera_height = 3
@@ -24,11 +24,11 @@ signal valve_inspected
 #The algorithm will cast the corners of an equilateral triangle to assess the visibility from an inspection point. The sides of the makeshift equilateral triangle has the length raycast_triangle_length (in m). Take note that if this variable is set too high, the raycast triangle might jump past an obstacle right next to it, which might not necessarily ensure too good of a view
 @onready var raycast_triangle_length = 0.1
 
-#The minimum distance (in m) the camera can be away from the valve. This is to prevent the camera from being too close to the valve or potentially ending up inside the valve
+#The minimum distance (in m) the camera can be away from the valve. This is to prevent the camera from being too close to the valve or potentially ending up inside the valve. If the algorithm stops due to an error that the ray-cast has failed, then this value should be increased as this means that the ray-cast was fired too close to the valve.
 @onready var min_distance_from_valve = 0.5
 
 #If the variable terminate_early is set to Y (yes), then the algorithm will terminate early if it find that the robot moves further away than the closest point currently found. This will result in the algorithm not finding an optimal inspection pose at a certain height if this inspection pose will be further away than the most optimal (and thus closest point) found thus far (such a pose would need a manual assessment from the resulting inspection images anyways, so it does not remove any automation aspects). This will also save screenshots of the optimal poses found. To deactivate, put any string value other than "Y" (ex. "N")
-@onready var terminate_early = "N"
+@onready var terminate_early = "Y"
 
 #Location of the JSON mission file template (either empty or with a previous mission that should be extended with the results from this algorithm iteration)
 @onready var json_file_template = "res://default_turtlebot_empty.json"
@@ -148,12 +148,16 @@ func _ready():
 				#Updating the robots position
 				robot_position = global_transform.origin
 				
-				#Check if there are obstacles between the robot and the valve using a ray-cast
 				raycast_origin = point+Vector3(0, camera_height, 0)
-				query = PhysicsRayQueryParameters3D.create(raycast_origin, target_position)
-				query.exclude = [self]
-				result = space_state.intersect_ray(query)
-				cast_direction = (target_position - raycast_origin).normalized()
+				
+				#If the ray-cast is fired too close to a valve, the ray-cast will fail. This if statement checks if the current pose is at least as far away from the valve as min_distance_from_valve
+				if raycast_origin.distance_to(target_position) > min_distance_from_valve:
+					
+					#Check if there are obstacles between the robot and the valve using a ray-cast
+					query = PhysicsRayQueryParameters3D.create(raycast_origin, target_position)
+					query.exclude = [self]
+					result = space_state.intersect_ray(query)
+					cast_direction = (target_position - raycast_origin).normalized()
 
 				#Rotation from the forward vector to the direction vector that points towards the valve represented in quaternions. The rotation is relative to the forward vector defined in Godot
 				orientation = Quaternion(Vector3.FORWARD, cast_direction)
