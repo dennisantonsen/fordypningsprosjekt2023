@@ -6,14 +6,14 @@ signal valve_inspected
 #################### Settings ####################
 
 #The resolution of which the robot moves along the edges of the walkway. Higher resolution / decrease in the walkway_resolution variable (counter-intuitive) results in more points visited by the robot and the chance for an optimal inspection point increases
-@onready var walkway_resolution = 0.25
+@onready var walkway_resolution = 0.75
 
 #The height of the camera (in m) that is attached to the robot
 @onready var max_camera_height = 3
 @onready var min_camera_height = 0.2
 
 #The amount of heights to search, between max and min height. Divides the height interval into "height_resolution" different heights. Ex: height_resolutuon = 5 will divide the interval into 5 different heights and search at these 5 heights. Needs to be an integer
-@onready var height_resolution = 10
+@onready var height_resolution = 5
 
 #If only one height is to be searched, then specify which height here (in m). Do not need to change this if the algorithm is to check several heights (the height_resolution is set to an integer larger than 1)
 @onready var static_camera_height = 3
@@ -25,7 +25,7 @@ signal valve_inspected
 @onready var raycast_triangle_length = 0.1
 
 #The minimum distance (in m) the camera can be away from the valve. This is to prevent the camera from being too close to the valve or potentially ending up inside the valve. If the algorithm stops due to an error that the ray-cast has failed, then this value should be increased as this means that the ray-cast was fired too close to the valve.
-@onready var min_distance_from_valve = 0.5
+@onready var min_distance_from_valve = 0.8
 
 #If the variable terminate_early is set to Y (yes), then the algorithm will terminate early if it find that the robot moves further away than the closest point currently found. This will result in the algorithm not finding an optimal inspection pose at a certain height if this inspection pose will be further away than the most optimal (and thus closest point) found thus far (such a pose would need a manual assessment from the resulting inspection images anyways, so it does not remove any automation aspects). This will also save screenshots of the optimal poses found. To deactivate, put any string value other than "Y" (ex. "N")
 @onready var terminate_early = "Y"
@@ -37,7 +37,7 @@ signal valve_inspected
 @onready var json_file = "res://default_turtlebot.json"
 
 #Change the iteration identifier to store different iteration results
-@onready var iteration = "examplerun"
+@onready var iteration = "generalperformance"
 
 ##################################################
 
@@ -84,6 +84,7 @@ var current_valve_location = []
 var current_minimal_distance = []
 var iteration_results = ""
 var first_addition_to_file = 1
+var raycast_fired = 1
 
 func _ready():
 	
@@ -141,6 +142,7 @@ func _ready():
 			for point in inspection_points:
 				
 				count += 1
+				raycast_fired = 0
 				
 				#Teleport the robot to the inspection point for testing
 				global_transform.origin = point
@@ -151,17 +153,18 @@ func _ready():
 				raycast_origin = point+Vector3(0, camera_height, 0)
 				
 				#If the ray-cast is fired too close to a valve, the ray-cast will fail. This if statement checks if the current pose is at least as far away from the valve as min_distance_from_valve
-				if raycast_origin.distance_to(target_position) > min_distance_from_valve:
+				if raycast_origin.distance_to(target_position) > 0.1:
 					
 					#Check if there are obstacles between the robot and the valve using a ray-cast
 					query = PhysicsRayQueryParameters3D.create(raycast_origin, target_position)
 					query.exclude = [self]
 					result = space_state.intersect_ray(query)
 					cast_direction = (target_position - raycast_origin).normalized()
+					raycast_fired = 1
 
-				#Rotation from the forward vector to the direction vector that points towards the valve represented in quaternions. The rotation is relative to the forward vector defined in Godot
-				orientation = Quaternion(Vector3.FORWARD, cast_direction)
-				camera.global_transform.basis = Basis(orientation)
+					#Rotation from the forward vector to the direction vector that points towards the valve represented in quaternions. The rotation is relative to the forward vector defined in Godot
+					orientation = Quaternion(Vector3.FORWARD, cast_direction)
+					camera.global_transform.basis = Basis(orientation)
 				
 				await get_tree().create_timer(delay).timeout
 				
@@ -178,7 +181,7 @@ func _ready():
 				clear_sight = 0
 			
 				#The if statement will confirm that this point is an optimal point for this camera height. The nested if statements will assess the view towards to valve from the inspection point
-				if result.collider == valves[valve_index] and raycast_origin.distance_to(target_position) > min_distance_from_valve:
+				if raycast_fired == 1 and result.collider == valves[valve_index] and raycast_origin.distance_to(target_position) > min_distance_from_valve:
 					
 					#Checking the first corner of the makeshift raycast triangle to evaluate the view to the valve
 					side_direction = cast_direction.cross(Vector3(0, 1, 0)).normalized()
