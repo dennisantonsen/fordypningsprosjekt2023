@@ -1,0 +1,10 @@
+version: '3.2'
+
+services:
+  workspace:
+    container_name: workspace
+    build:
+      context: ./.devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace:cached

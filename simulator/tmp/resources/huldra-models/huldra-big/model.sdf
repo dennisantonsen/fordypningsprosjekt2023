@@ -1,0 +1,296 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+    <model name='huldra-big'>
+        <static>true</static>
+        <link name='link0'>
+            <visual name="HULDRA-HA-ARCH">
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-ARCH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-ELEC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-ELEC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-HVAC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-HVAC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-INST'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-INST.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-MECH'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-MECH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-PIPE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-PIPE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-SAFE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-SAFE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-STRU'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-STRU.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-TELE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-TELE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-ARCH'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-ARCH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-ELEC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-ELEC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-HVAC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-HVAC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-INST'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-INST.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-MECH'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-MECH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-SAFE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-SAFE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-STRU'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-STRU.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HB-TELE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HB-TELE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HC-ELEC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HC-ELEC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HC-MECH'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HC-MECH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HC-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HC-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HC-SAFE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HC-SAFE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HC-STRU'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HC-STRU.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HO-ELEC'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HO-ELEC.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HO-MECH'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HO-MECH.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HO-PIPE'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HO-PIPE.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HO-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HO-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HO-STRU'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HO-STRU.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-MD1-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-MD1-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-MD2-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-MD2-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-MD3-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-MD3-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-MD4-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-MD4-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-MD5-PSUP'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-MD5-PSUP.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-PATHWAYS'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-PATHWAYS.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <visual name='HULDRA-HA-ESCAPEROUTE-SECTION'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://huldra-models/huldra-big/meshes/HULDRA-HA-ESCAPEROUTE-SECTION.obj</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

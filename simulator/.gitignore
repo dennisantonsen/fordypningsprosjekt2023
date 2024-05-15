@@ -1,2 +1,5 @@
-*/output/*
-__pycache__/
+## Tools
+.env
+
+## Misc
+isar-turtlebot

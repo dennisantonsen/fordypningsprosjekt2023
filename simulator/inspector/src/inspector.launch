@@ -1,3 +1,0 @@
-<launch>
-  <node name="inspector" pkg="inspector" type="inspector.py" output="screen" />
-</launch>
