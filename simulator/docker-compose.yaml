@@ -1,5 +1,5 @@
 services:
-  node:
+  jstools:
     container_name: jstools
     build:
       context: .
@@ -10,3 +10,25 @@ services:
         target: /workdir
     user: "${UID}:${GID}"
     tty: true
+
+  pytools:
+    container_name: pytools
+    build:
+      context: .
+      dockerfile: pytools.dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /workdir
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY}
+    user: "${UID}:${GID}"
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

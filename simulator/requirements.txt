@@ -4,4 +4,4 @@ numpy
 # Options for docker (no gui):
 # - opencv-python-headless - main modules package
 # - opencv-contrib-python-headless - contains both main modules and contrib/extra modules
-opencv-python-headless
+opencv-python
