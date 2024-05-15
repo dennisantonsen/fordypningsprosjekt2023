@@ -1,0 +1,12 @@
+services:
+  node:
+    container_name: jstools
+    build:
+      context: .
+      dockerfile: jstools.dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /workdir
+    user: "${UID}:${GID}"
+    tty: true

@@ -38,9 +38,41 @@ Verify json output using ISAR Api:
 1. Inspect output from ISAR
 
 
+## Preparations
+
+Convert models using tools provided in docker containers.  
+The containers should run in your user context, and to do that you first need to set up a configuration file.
+
+1. Create a `.env` file next to the `docker-compose.yaml` file
+1. Run linux command `id`, note the `uid` and `gid` values from the output
+1. Inside `.env` add the following variables with the values you got from the `id` command:  
+   ```sh
+   UID=number
+   GID=number
+   ```
+   and save the file.
+1. Done!
+
+Now we can start using the tools inside the containers to convert models into the required formats.
+
+```sh
+# Current host directory will be mounted into /workdir inside the containers
+docker compose up --detach
+
+# Convert OBJ to GLTF by jumping into the into the jstools container
+# Docs, https://github.com/CesiumGS/obj2gltf
+docker exec -it jstools /bin/bash
+
+# From inside the jstools container you can now use obj2gltf as a command line tool or use the provided script to convert entire directories.
+# Example:
+# ./jstools_dir_obj_to_gltf.sh world/huldra/sdf/huldra-big/meshes/ world/huldra/gltf/huldra-big
+
+```
 
 
 ## How to use
+
+STATUS: work in progress
 
 ### Configure Equinor's `isar-turtlebot` simulator for use with our models
 
