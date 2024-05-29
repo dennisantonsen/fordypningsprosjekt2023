@@ -2,9 +2,9 @@
 
 The optimization algorithm is run in the game engine Godot. This is where the algorithm uses the 3D model of a facility to find optimal inspection poses of requested valves within the facility. The algorithm will output a JSON file containing the most optimal inspection poses found during its inspection. The output JSON file is then input to ISAR to either be simulated on ISAR-Turtlebot or to be used on a physical robot.
 
-Setup guide for the algorithm Godot environment:
+## Setup guide for the algorithm Godot environment:
 
-## Importing and setting up the facility:
+### Importing and setting up the facility:
 
 1. Make a new project in Godot.
 2. Import the gLTF files of the facility to the `res://` folder in the Godot project.
@@ -15,7 +15,7 @@ Setup guide for the algorithm Godot environment:
 5. In the `Scene` menu, select all the objects that belong to the facility scene, go to the `Mesh` menu that can be seen in the 3D viewer window in the middle of the screen and select `Create Trimesh Static Body`.
     - **Additional description:** This will give all the nodes in the facility scene a collision shape, which is important so that the ray-casts can identify these objects.
 
-## Setting up and defining the valves:
+### Setting up and defining the valves:
 
 1. In the `Scene` menu, right-click the `Node3D` scene, select `Add Child Node`, and add a `StaticBody3D` node.
 2. Change the name of the `StaticBody3D` node to `Valve 1`.
@@ -34,12 +34,12 @@ Setup guide for the algorithm Godot environment:
 9. When the first sphere is placed on the first valve, right-click the `Valve 1` node, copy it, and paste it in the `Node3D` scene, all in the `Scene` menu. Place the copied sphere on the next valve that the algorithm should inspect in the 3D viewer. Repeat this procedure until all valves of interest have a sphere marking the point of interest on the valve.
     - **Additional description:** The first copied sphere should have a `StaticBody3D` node automatically renamed to `Valve 2`. Also, keep in mind that it is very important that it is this `StaticBody3D` node that is moved around when placing the spheres on the valves and not any of its children (the `MeshInstance3D` node and the `CollisionShape3D` node). The visibility of the spheres can be turned off so that they do not cover the valves in the resulting inspection images output by the algorithm. This is done by clicking the small eye icon next to each valve node in the `Scene` menu.
 
-## Defining the walkway:
+### Defining the walkway:
 
 1. In Godot, locate the `MeshInstance3D` nodes that make up the walkway, and add them to the `walkway` group.
     - **Additional description:** This can be done by either importing the walkway files separately, navigating through the facility scene in the `Scene` menu and locating the nodes there, or by clicking on the objects that make up the walkway in the 3D viewer one by one. The latter is probably the easiest, but one has to make sure that all objects that make up the walkway are accounted for. Adding the nodes to the `walkway` group is done in the exact same way as the valves are added to the `valves` group. When adding the nodes to the `walkway` group, make sure that it is the `MeshInstance3D` node that gets added to the group.
 
-## Adding the algorithm scripts:
+### Adding the algorithm scripts:
 
 1. Navigate to the project files for the current project.
     - **Additional description:** This can be done by right-clicking the `res://` in the `FileSystem` menu in the bottom left corner in Godot.
@@ -49,7 +49,7 @@ Setup guide for the algorithm Godot environment:
 4. In the `Scenes` menu, right-click the `Node3D` scene, select `Attach Script` with path `res://node_3d.gd`, and click `Load`.
     - **Additional description:** This will add the `node_3d.gd` script to the `Node3D` scene to allow for communication between the `node_3d.tscn` scene and the `robot.tscn` scene.
 
-## Setting up the robot:
+### Setting up the robot:
 
 1. In the `Scenes` menu, right-click the `Node3D` scene, select `Add Child Node`, and add a `GridContainer` node.
 2. In the `Scenes` menu, right-click the `GridContainer` node and add a `SubViewportContainer` node.
@@ -59,15 +59,15 @@ Setup guide for the algorithm Godot environment:
 5. Optional: Change the scale of the robot for more realistic proportions.
     - **Additional description:** This can be done by selecting the `Robot` scene in the `Scene` menu and going to the `Inspector` menu. In the `Inspector` menu, go to `Transform` and change the `Scale` property. A scale of 0.25 was used in this project.
 
-## Adding the JSON mission definition template file:
+### Adding the JSON mission definition template file:
 
 1. Similarly to when the algorithm scripts were added, locate the project files and add a JSON mission definition file.
-    - **Additional description:** The mission definition file can either be empty (example in the GitHub repository: [/Main/Godot/Godot Test Simulation/default_turtlebot_empty.json](https://github.com/dennisantonsen/fordypningsprosjekt2023/blob/main/godot/Godot%20Test%20Simulation/default_turtlebot_empty.json)) or have tasks already within the file. The algorithm will use this file as a template when creating the final output file and will add tasks to the existing tasks list in the template file. This template file will not be overwritten, as the algorithm will create a mission definition file for the output.
+    - **Additional description:** The mission definition file can either be empty (example in the GitHub repository: /Main/Godot/Godot Test Simulation/default_turtlebot_empty.json) or have tasks already within the file. The algorithm will use this file as a template when creating the final output file and will add tasks to the existing tasks list in the template file. This template file will not be overwritten, as the algorithm will create a mission definition file for the output.
 
 2. Define the path to the JSON template file in the algorithm settings.
     - **Additional description:** To change the algorithm settings, go to the `Script` tab, select the `robot.gd` script, and locate the settings menu at the top of the script. If the option to select the `robot.gd` script does not appear in the `Script` tab, go to the `Scenes` menu and go to the `Robot` scene under the `SubViewport` node and click the small script symbol on the `Robot` scene. Change the `json_file_template` setting to accurately point to the JSON template file.
 
-## Optional - Add lighting:
+### Optional - Add lighting:
 
 1. In the `Scenes` menu, right-click `Node3D`, select `Add Child Node`, and add a `DirectionalLight3D` node.
     - **Additional description:** The `DirectionalLight3D` node is not necessary for the setup to function, but it is recommended to increase visibility within the facility. The images saved by the robot will greatly increase in quality if there is one or several light sources lighting up the facility.
@@ -77,7 +77,7 @@ Setup guide for the algorithm Godot environment:
 
 3. Adjust the light source so that it gives the desired effect. It is also possible to add several light sources to cover more of the facility.
 
-## Optional - Add a third-person camera
+### Optional - Add a third-person camera
 
 1. In the `Scenes` menu, right-click the `GridContainer` node, select `Add Child Node`, and add a `SubViewportContainer` node and a `SubViewport` child to this node.
 2. In the `SubViewport` child node, add a `Camera3D` node by right-clicking the `SubViewport`.
@@ -87,7 +87,7 @@ Setup guide for the algorithm Godot environment:
 4. Position and rotate the camera into a preferred pose.
     - **Additional description:** When the camera seems to be positioned correctly, and it seems like it covers most of the facility, click the `Preview` button in the 3D viewer while the camera is selected in the `Scenes` menu.
 
-## Preparing to start the simulation:
+### Preparing to start the simulation:
 
 1. Change the settings in the `robot.gd` script to fit the needs of the simulation.
 2. Run the algorithm by clicking the start symbol at the top of the Godot window.
